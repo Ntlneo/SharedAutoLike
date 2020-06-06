@@ -1,2 +1,1 @@
-# CoreAutomationTest
-Use as core for other auto test projects
+For who want a Free auto increase FB like Page/Post/Story
