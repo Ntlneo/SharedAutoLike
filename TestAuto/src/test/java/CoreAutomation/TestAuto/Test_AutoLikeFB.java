@@ -22,14 +22,13 @@ public class Test_AutoLikeFB {
 	static WebDriver driver;
 	static String driverPath;
 
-	// changed	
-	static String username = "ntlneo";
-	static String password = "Docnhat001@";
-//	static String emailFB = "an.thanh282000@gmail.com";
-//	static String passFB = "Docnhat001@";
-	static String emailFB = "suzukihzt@gmail.com";
-	static String passFB = "Docnhat1";
-	static int numberOfLoop = 60;
+	// changeable data
+	static String pageDemo = "https://www.like4like.org";
+	static String username = "";	//username of Like4like.org
+	static String password = "";	//password of Like4like.org
+	static String emailFB = "";		//username of FB acc that you use to test
+	static String passFB = "";		//password of FB acc that you use to test
+	static int numberOfLoop = 60;	//The number of click like button in like4like.org. 1 round = 14 click  
 
 	// locators
 	static By loginBtn = By.xpath("//a[contains(@title,'Login')]");
@@ -51,6 +50,7 @@ public class Test_AutoLikeFB {
 	static By likePageBtn = By.xpath("//*[@aria-label='like button' or @aria-label='Like button' or @aria-label='nút thích' or @aria-label='Nút thích']");
 	static By likePostBtn = By.xpath("//a[@data-autoid='autoid_7']");
 
+	// *********************** Code Run ***********************
 	@org.junit.Test
 	public void TestAutoLike() {
 		System.out.println("Testbranch");
@@ -66,8 +66,7 @@ public class Test_AutoLikeFB {
 
 		try {
 			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+		} catch (InterruptedException e) {			
 			e.printStackTrace();
 		}
 		System.out.println("\t###### END SCRIPT. SEE YA AGAIN !!!\t######");
@@ -75,7 +74,7 @@ public class Test_AutoLikeFB {
 
 	}
 
-	// *********************** MIX ***********************
+	// *********************** Functions ***********************
 	
 	static void checkBonusPage() {
 		String currentURL = driver.getCurrentUrl();
@@ -109,8 +108,7 @@ public class Test_AutoLikeFB {
 				}
 				try {
 					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
+				} catch (InterruptedException e) {					
 					e.printStackTrace();
 				}
 				if (i == 0 && count == 0) {					
@@ -125,8 +123,7 @@ public class Test_AutoLikeFB {
 				}
 				try {
 					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
+				} catch (InterruptedException e) {					
 					e.printStackTrace();
 				}
 				try {
@@ -174,7 +171,6 @@ public class Test_AutoLikeFB {
 		System.setProperty("webdriver.chrome.driver", driverPath);
 		System.setProperty("webdriver.chrome.silentOutput", "true");
 		ChromeOptions options = new ChromeOptions();
-//		options.setExperimentalOption("excludeSwitches", new String[] { "enable-automation", "enable-logging" });
 		options.setExperimentalOption("excludeSwitches", new String[] { "enable-automation" });
 		options.setExperimentalOption("useAutomationExtension", false);
 		Map<String, Object> prefs = new HashMap<String, Object>();
@@ -182,11 +178,10 @@ public class Test_AutoLikeFB {
 		prefs.put("profile.password_manager_enabled", false);
 		options.setExperimentalOption("prefs", prefs);
 		driver = new ChromeDriver(options);
-//		driver.manage().window().setPosition(new Point(0, 50000));
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		driver.get("https://www.like4like.org");
+		driver.get(pageDemo);
 	}
 
 	static List<WebElement> getListWebElement(By by) {
