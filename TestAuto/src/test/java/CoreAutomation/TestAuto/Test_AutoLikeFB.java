@@ -43,7 +43,7 @@ public class Test_AutoLikeFB {
 	static By listLikeBtn = By.xpath("//td[contains(@id,'task')]");
 
 	// new window with pagelike
-	static By dangnhapBtn = By.xpath("(//*[contains(text(),'Đăng nhập') or contains(text(),'Log in') or contains(text(),'Login')]/ancestor::a)[1]");
+	static By dangnhapBtn = By.xpath("(//*[contains(text(),'Đăng nhập') or contains(text(),'Log in') or contains(text(),'Login') or contains(text(),'Log In')]/ancestor::a)[1]");
 	static By emailFbBox = By.xpath("//*[@name='email']");
 	static By passFbBox = By.xpath("//*[@name='pass']");
 	static By loginFbBtn = By.xpath("//*[@name='login']");
