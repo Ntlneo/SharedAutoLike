@@ -103,7 +103,8 @@ public class Test_AutoLikeFB {
 				String firstWindow = driver.getWindowHandle();
 				Set<String> windows = driver.getWindowHandles();
 				for (String window : windows) {
-					driver.switchTo().window(window);
+					if (!firstWindow.equals(window))
+						driver.switchTo().window(window);
 				}
 				try {
 					Thread.sleep(1000);
