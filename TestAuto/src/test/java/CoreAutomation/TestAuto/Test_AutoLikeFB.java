@@ -49,6 +49,7 @@ public class Test_AutoLikeFB {
 	static By loginFbBtn = By.xpath("//*[@name='login']");
 	static By likePageBtn = By.xpath("//*[@aria-label='like button' or @aria-label='Like button' or @aria-label='nút thích' or @aria-label='Nút thích']");
 	static By likePostBtn = By.xpath("//a[@data-autoid='autoid_7']");
+	static By likeVideoBtn = By.xpath("//a[@data-autoid='autoid_6']");
 
 	// *********************** Code Run ***********************
 	@org.junit.Test
@@ -91,9 +92,9 @@ public class Test_AutoLikeFB {
 	static void doLoopLike() {
 		int count = 0;
 		int numberOfLikeBtn = getListWebElement(listLikeBtn).size();
-		
-			for (int i = 0; i < numberOfLikeBtn; i++) {
-				if (count < numberOfLoop) {
+
+		for (int i = 0; i < numberOfLikeBtn; i++) {
+			if (count < numberOfLoop) {
 				checkBonusPage();
 				String strSearch = "')]/descendant";
 				String strNewLikeBtn = strLikeBtn.replace(strSearch, i + strSearch);
@@ -108,14 +109,15 @@ public class Test_AutoLikeFB {
 				}
 				try {
 					Thread.sleep(1000);
-				} catch (InterruptedException e) {					
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				if (i == 0 && count == 0) {					
-					try{
+				if (i == 0 && count == 0) {
+					try {
 						click(dangnhapBtn);
-					}catch (Exception e) {
-						click(dangnhapBtn);						
+					} catch (Exception e) {
+						click(dangnhapBtn);
 					}
 					input(emailFbBox, emailFB);
 					input(passFbBox, passFB);
@@ -123,23 +125,33 @@ public class Test_AutoLikeFB {
 				}
 				try {
 					Thread.sleep(1000);
-				} catch (InterruptedException e) {					
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				try {
 					click(likePageBtn);
 					count += 1;
-					System.out.println("###### CLICKED LIKE Button : " + count );
+					System.out.println("###### CLICKED LIKE Button : " + count);
 					Thread.sleep(1000);
 				} catch (Exception e) {
 					try {
 						click(likePostBtn);
 						count += 1;
-						System.out.println("###### CLICKED LIKE Button : " + count );
+						System.out.println("###### CLICKED LIKE Button : " + count);
 						Thread.sleep(1000);
 					} catch (Exception x) {
-						count += 1;
-						System.out.println("###### CLICKED LIKE Button : " + count + " --> Missed !");
+						try {
+							click(likeVideoBtn);
+							count += 1;
+							System.out.println("###### CLICKED LIKE Button : " + count);
+							Thread.sleep(1000);
+						} catch (Exception y) {
+							String currentURL = driver.getCurrentUrl();
+							count += 1;
+							System.out.println("###### CLICKED LIKE Button : " + count + " --> Missed !");
+							System.out.println("\t--> Please manually ReCheck URL: " + currentURL);
+						}
 					}
 				} finally {
 					driver.close();
@@ -148,7 +160,7 @@ public class Test_AutoLikeFB {
 				if (i == 13) {
 					i = -1;
 				}
-			}else {
+			} else {
 				break;
 			}
 		}
