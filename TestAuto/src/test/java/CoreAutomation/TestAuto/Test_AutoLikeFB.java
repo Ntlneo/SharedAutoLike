@@ -196,6 +196,10 @@ public class Test_AutoLikeFB {
 		driver.get(pageDemo);
 	}
 
+	static String getCurrentURL() {
+		return driver.getCurrentUrl();
+	}
+	
 	static List<WebElement> getListWebElement(By by) {
 		return driver.findElements(by);
 	}
