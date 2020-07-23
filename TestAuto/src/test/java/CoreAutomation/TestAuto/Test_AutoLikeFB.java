@@ -43,13 +43,14 @@ public class Test_AutoLikeFB {
 	static By listLikeBtn = By.xpath("//td[contains(@id,'task')]");
 
 	// new window with pagelike
-	static By dangnhapBtn = By.xpath("(//*[contains(text(),'Đăng nhập') or contains(text(),'Log in') or contains(text(),'Login') or contains(text(),'Log In')]/ancestor::a)[1]");
+	static By dangnhapBtn = By.xpath("(//*[contains(text(),'Đăng nhập') or contains(text(),'Log in') or contains(text(),'Login') or contains(text(),'Log In') or contains(text(),'登入')]/ancestor::a)[1]");
 	static By emailFbBox = By.xpath("//*[@name='email']");
 	static By passFbBox = By.xpath("//*[@name='pass']");
 	static By loginFbBtn = By.xpath("//*[@name='login']");
-	static By likePageBtn = By.xpath("//*[@aria-label='like button' or @aria-label='Like button' or @aria-label='nút thích' or @aria-label='Nút thích']");
-	static By likePostBtn = By.xpath("//a[@data-autoid='autoid_7']");
-	static By likeVideoBtn = By.xpath("//a[@data-autoid='autoid_6']");
+	static By likePageBtn = By.xpath(
+			"//*[@aria-label='like button' or @aria-label='Like button' or @aria-label='nút thích' or @aria-label='Nút thích']");
+	static By likePostBtn = By.xpath("(//*[text()='Like'])[1] | (//*[text()='Giống'])[1] | (//*[text()='Thích'])[1]");
+	static By likeVideoBtn = By.xpath("(//*[text()='Like'])[2] | (//*[text()='Giống'])[2] | (//*[text()='Thích'])[2]");
 
 	// *********************** Code Run ***********************
 	@org.junit.Test
